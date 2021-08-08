@@ -94,6 +94,8 @@ function Header({ classs, placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
           className={`pl-5 bg-transparent outline-none flex-grow text-sm ${
+            styles.inputClass
+          } ${
             show
               ? "text-gray-600 placeholder-gray-400"
               : "text-gray-400 placeholder-gray-300"
@@ -104,8 +106,8 @@ function Header({ classs, placeholder }) {
       </div>
       <div className="flex space-x-4 items-center justify-end text-gray-500">
         <p className="hidden md:inline cursor-pointer">Become a host</p>
-        <GlobeAltIcon className="h-6 cursor-pointer" />
-        <div className="flex items-center border-2 space-x-2 p-2 rounded-full">
+        <GlobeAltIcon className="hidden md:inline h-6 cursor-pointer" />
+        <div className="hidden md:inline-flex items-center border-2 space-x-2 p-2 rounded-full">
           <MenuIcon className="h-6 cursor-pointer" />
           <UserCircleIcon className="h-6 cursor-pointer" />
         </div>

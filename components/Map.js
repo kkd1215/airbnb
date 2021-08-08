@@ -2,6 +2,7 @@ import { getCenter } from "geolib";
 import Image from "next/image";
 import React, { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { StarIcon } from "@heroicons/react/solid";
 
 function Map({ searchResults }) {
   const [selectLocation, setSelectLocation] = useState({});
@@ -51,18 +52,21 @@ function Map({ searchResults }) {
               closeOnClick={true}
               latitude={result.lat}
               longitude={result.long}
-              className="flex flex-col z-10"
+              className="bg-red-400 z-10 rounded-2xl"
             >
-              <div className="relative h-40 w-60 rounded-xl">
-                <Image
+              <div className="flex flex-col">
+                <img
                   src={result.img}
-                  layout="fill"
-                  objectFit="cover"
-                  className="flex"
+                  objectFit="contain"
+                  className="h-[180px] w-full mt-4 mb-3 rounded-lg"
                 />
-                <div className="top-5 left-4 text-gray-800 font-bold">
-                  <p>{result.title}</p>
-                  <p className="text-xl">{result.price}</p>
+                <p className="text-md font-bold mb-2">{result.title}</p>
+                <p className="text-md font-semibold mb-2">{result.price}</p>
+                <div className="flex items-center justify-between">
+                  <p className="flex items-center">
+                    <StarIcon className="h-5 text-red-400 m-1" />
+                    {result.star}
+                  </p>
                 </div>
               </div>
             </Popup>
