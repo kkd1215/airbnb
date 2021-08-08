@@ -31,6 +31,12 @@ function Header({ classs, placeholder }) {
     setSearchInput("");
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      search();
+    }
+  };
+
   const search = () => {
     router.push({
       pathname: "/search",
@@ -93,6 +99,7 @@ function Header({ classs, placeholder }) {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
+          onKeyDown={handleKeyDown}
           className={`pl-5 bg-transparent outline-none flex-grow text-sm ${
             styles.inputClass
           } ${
