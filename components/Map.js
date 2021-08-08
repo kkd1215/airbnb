@@ -52,7 +52,7 @@ function Map({ searchResults }) {
               closeOnClick={true}
               latitude={result.lat}
               longitude={result.long}
-              className="bg-red-400 z-10 rounded-2xl"
+              className="bg-green-400 z-10 rounded-2xl"
             >
               <div className="flex flex-col">
                 <img
