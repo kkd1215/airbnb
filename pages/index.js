@@ -6,7 +6,7 @@ import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
 
-export default function Home({ exploreData, cardsData }) {
+export default function Home({ exploreData, cardsData, otherCardsData }) {
   return (
     <div className="bg-gray-50">
       <Head>
@@ -39,7 +39,7 @@ export default function Home({ exploreData, cardsData }) {
           title="The Greatest Outdoors"
           description="Wishlists curated by Airbnb."
           buttonText="Get Inspired"
-          h3Class="text-4xl mb-3 w-64"
+          h3Class="text-4xl font-bold mb-3 w-64"
           pClass=""
           buttonClass="text-sm text-white bg-gray-900 rounded-lg px-4 py-2 mt-5 cursor-pointer hover:shadow-xl active:scale-90 transition duration-150"
         />
@@ -47,7 +47,27 @@ export default function Home({ exploreData, cardsData }) {
           <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
           <div className="flex space-x-3 overflow-x-scroll scrollbar-hide p-3 -ml-3">
             {cardsData?.map(({ img, title }) => (
-              <MediumCard key={img} img={img} title={title} />
+              <MediumCard
+                key={img}
+                img={img}
+                title={title}
+                h3Class="text-2xl mt-3"
+              />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-4xl font-semibold py-8">Discover things to do</h2>
+          <div className="flex space-x-6 overflow-x-scroll scrollbar-hide p-3 -ml-3">
+            {otherCardsData?.map(({ img, title, desc }) => (
+              <MediumCard
+                key={img}
+                img={img}
+                title={title}
+                desc={desc}
+                h3Class="text-lg mt-3 font-semibold"
+              />
             ))}
           </div>
         </section>
@@ -77,10 +97,15 @@ export async function getStaticProps() {
     res.json()
   );
 
+  const otherCardsData = await fetch("https://kdsh.herokuapp.com/kjk").then(
+    (res) => res.json()
+  );
+
   https: return {
     props: {
       exploreData,
       cardsData,
+      otherCardsData,
     },
   };
 }

@@ -5,6 +5,8 @@ import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
+import Slide from "react-reveal";
 
 function Search({ searchResults }) {
   const router = useRouter();
@@ -28,38 +30,53 @@ function Search({ searchResults }) {
       />
       <main className="flex">
         <section className="pt-14 px-6 flex-grow">
-          <p className="text-xs">
-            300+ stays - {range} - for {guests} guests
-          </p>
-          <h1 className="font-semibold text-3xl mt-2 mb-6">
-            Stays in {location}
-          </h1>
-
-          <div className="hidden lg:inline-flex whitespace-nowrap mb-5 text-gray-800 space-x-3">
-            <p className="button">Cancellation Flexibility</p>
-            <p className="button">Type of Place</p>
-            <p className="button">Price</p>
-            <p className="button">Rooms and Beds</p>
-            <p className="button">More filters</p>
+          <div className="bg-gray-50 rounded-xl pt-4 pl-4 mb-4">
+            <p className="text-sm font-semibold">
+              300+ stays -{" "}
+              <span className="bg-[#f18285] rounded-lg p-1">
+                {formattedStartDate}
+              </span>{" "}
+              -{" "}
+              <span className="bg-[#f18285] rounded-lg p-1">
+                {formattedEndDate}
+              </span>{" "}
+              - for {guests} guests
+            </p>
+            <h1 className="font-semibold text-3xl mt-2 mb-6">
+              Stays in {location}
+            </h1>
+            <div className="hidden lg:inline-flex whitespace-nowrap mb-5 text-gray-800 space-x-3">
+              <p className="button">Cancellation Flexibility</p>
+              <p className="button">Type of Place</p>
+              <p className="button">Price</p>
+              <p className="button">Rooms and Beds</p>
+              <p className="button">More filters</p>
+            </div>
           </div>
-
-          <div className="flex flex-col">
-            {searchResults?.map(
-              ({ img, location, title, description, star, price, total }) => (
-                <InfoCard
-                  key={img}
-                  img={img}
-                  title={title}
-                  location={location}
-                  description={description}
-                  star={star}
-                  price={price}
-                  total={total}
-                />
-              )
-            )}
-          </div>
+          <Slide left>
+            <div className="flex flex-col mb-5 bg-gray-50 rounded-xl">
+              {searchResults?.map(
+                ({ img, location, title, description, star, price, total }) => (
+                  <InfoCard
+                    key={img}
+                    img={img}
+                    title={title}
+                    location={location}
+                    description={description}
+                    star={star}
+                    price={price}
+                    total={total}
+                  />
+                )
+              )}
+            </div>
+          </Slide>
         </section>
+        <Slide right>
+          <section className="hidden pt-14 lg:inline-flex lg:min-w-[600px] ">
+            <Map searchResults={searchResults} />
+          </section>
+        </Slide>
       </main>
       <Footer />
     </div>

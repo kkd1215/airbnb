@@ -51,8 +51,8 @@ function Header({ classs, placeholder }) {
   };
 
   const handleScroll = () => {
-    if (window.screen.width > 600) {
-      if (window.scrollY > 100) {
+    if (window.screen.width > 768) {
+      if (window.scrollY > 60) {
         setShow(true);
       } else {
         setShow(false);
@@ -134,11 +134,17 @@ function Header({ classs, placeholder }) {
               />
             </div>
             <div className="flex">
-              <button onClick={resetInput} className="flex-grow text-gray-500">
+              <button
+                onClick={resetInput}
+                className="flex-grow font-semibold text-red-600 bg-red-200 rounded-3xl"
+              >
                 {" "}
                 Cancel
               </button>
-              <button onClick={search} className="flex-grow text-red-500">
+              <button
+                onClick={search}
+                className="flex-grow font-semibold text-red-600 bg-gray-100 p-2 ml-1 rounded-3xl"
+              >
                 {" "}
                 Search
               </button>
