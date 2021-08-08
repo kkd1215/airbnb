@@ -10,7 +10,7 @@ function Banner() {
         layout="fill"
         objectFit="cover"
       />
-      <Fade bottom delay={400}>
+      <Fade bottom delay={300}>
         <div className="absolute top-1/4 w-[350px]">
           <p className="text-2xl sm:text-6xl max-w-[150px] font-bold ml-10 text-white ">
             Olympian & Paralympian Online Experiences
