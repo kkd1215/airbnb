@@ -32,7 +32,7 @@ function Header({ classs, placeholder }) {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && searchInput) {
       search();
     }
   };
